@@ -22,6 +22,11 @@
 \definecolor{bl}{rgb}{0.0,0.2,0.6} 
 \allsectionsfont{\color{bl}\scshape\selectfont}
 
+% Párrafos sin indentación
+\usepackage{parskip} % se encarga de espacios entre párrafos
+% Otra forma sin espacios entre párrafos
+% \setlength\parindent{0pt}
+\raggedbottom
 
 % Titulos de secciones
 %-----------------------------------------------------------------
@@ -63,7 +68,7 @@
 % Environment ejemplo
 %----------------------------------------
 \newcounter{ejemplo}[chapter]
-\newenvironment{ejemplo}[1][\unskip]{\stepcounter{ejemplo}\footnotesize{\bfseries\color{bl}{\noindent\\Ejemplo~\thechapter.\theejemplo #1}}\medskip\hrule\medskip\noindent}{\medskip}
+\newenvironment{ejemplo}[1][\unskip]{\stepcounter{ejemplo}\footnotesize{\bfseries\color{bl}{\noindent\\Ejemplo~\thechapter.\theejemplo #1}}\medskip\hrule\medskip\noindent}{\par}
 
 
 \usepackage{multicol}

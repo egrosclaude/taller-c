@@ -199,10 +199,10 @@ sola vez, en el valor de la última iteración de \lstinline{i}.
 
 \item Una clásica estructura de control para un proceso consumidor de objetos:
 \begin{lstlisting}
-a=leercarácter();
+a=leercaracter();
 while( a != '\033' ) {
     procesar(a);
-    a = leercarácter();
+    a = leercaracter();
 }
 \end{lstlisting}
 
@@ -210,7 +210,7 @@ while( a != '\033' ) {
 asignado) permite reescribir la estructura de control anterior como:
 
 \begin{lstlisting}
-while( (a=leercarácter()) != '\033' )
+while( (a=leercaracter()) != '\033' )
         procesar(a);
 \end{lstlisting}
 
@@ -220,12 +220,12 @@ verdad de la expresión (propiedad \quotes{del corto circuito}). Así, si supone
 procesar() siempre devuelve un valor distinto de cero, la sentencia siguiente equivale a los lazos anteriores.
 
 \begin{lstlisting}
-while((a=leercarácter()) != '\033' && procesar(a));
+while((a=leercaracter()) != '\033' && procesar(a));
 \end{lstlisting}
 \item Otra versión, utilizando la estructura do-while, podría ser:
 \begin{lstlisting}
 do {
-    if((a=leercarácter()) != '\033')
+    if((a=leercaracter()) != '\033')
         procesar(a);
 } while(a != '\033');
 \end{lstlisting}
@@ -233,14 +233,14 @@ do {
 \item Si utilizamos \lstinline{for}, que es esencialmente un \textit{while}:
 
 \begin{lstlisting}
-for( ; (a=leercarácter()) != '\033'; ) procesar(a);
+for( ; (a=leercaracter()) != '\033'; ) procesar(a);
 \end{lstlisting}
 
 Aquí dejamos vacías las secciones de inicialización y de incremento. 
 \item También, pero algo menos claro:
 
 \begin{lstlisting}
-for( ; (a=leercarácter()) != '\033'; procesar(a) );
+for( ; (a=leercaracter()) != '\033'; procesar(a) );
 \end{lstlisting}
 \end{itemize}
 \end{ejemplo}

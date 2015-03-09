@@ -52,7 +52,7 @@ punto arbitrariamente lejano de la instrucción que causó el problema.
 }
 
 \begin{ejemplo}
-La solución al problema de los punteros sin inicializar es asegurarse, \textbf{siempre}, que los punteros apuntan a \textbf{lugares válidos
+La solución al problema de los punteros sin inicializar es asegurarse, \textbf{siempre}, de que los punteros apuntan a \textbf{lugares válidos
 del programa}, asignándoles \textbf{direcciones de objetos conocidos}. 
 
 \begin{lstlisting}
@@ -622,7 +622,7 @@ main()
 }
 \end{lstlisting}
 
-En el tercer ejemplo usamos asignación dinámica y liberación de memoria. En un
+En el siguiente ejemplo cambiamos la asignación estática del ejemplo anterior, usando ahora asignación dinámica y liberación de memoria. En un
 sentido estricto, en este caso particular no es necesaria la liberación, porque
 la terminación del programa devuelve todas las estructuras creadas
 dinámicamente; pero es útil habituarse a la disciplina de aparear cada
@@ -632,7 +632,7 @@ invocación de \lstinline{malloc()} con el correspondiente \lstinline{free()}.
 main()
 {
     char *s;
-    s = malloc(100); /* ¡Ahora sí! */
+    s = malloc(100); /* ¡Ahora también! */
     gets(s);
     printf("ingresado: %s\n",s);
     free(s);

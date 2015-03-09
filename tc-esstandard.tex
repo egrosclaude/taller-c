@@ -159,7 +159,7 @@ main()
 
 \importante{
 El valor devuelto por \code{scanf()} es la \textbf{cantidad de datos leídos y convertidos
-exitosamente}, y debería siempre comprobarse que es igual a lo esperado.
+exitosamente}, y debería siempre comprobarse que sea igual a lo esperado.
 }
 
 El uso de \code{scanf()} es con frecuencia problemático. La función \code{scanf()} consumirá
@@ -651,7 +651,7 @@ Tanto las funciones ANSI C para archivos como las funciones POSIX de archivos
 manejan referencias obtenidas mediante la apertura y utilizadas durante toda la
 relación del programa con el archivo, pero las referencias son diferentes. La
 referencia al bloque de control utilizada por las funciones ANSI es de tipo
-\code{FILE *}, mientras que el descriptor de archivo POSIX es un int. Por este motivo
+\code{FILE *}, mientras que el descriptor de archivo POSIX es un \code{int}. Por este motivo
 no se pueden mezclar las llamadas a funciones de uno y otro grupo.
 
 Sin embargo, sí es cierto que las estructuras de tipo \code{FILE}, referenciadas por
