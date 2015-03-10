@@ -307,28 +307,8 @@ modificación de los archivos fuente y ejecutable, que no es necesaria la compil
 ejecutable es posterior al fuente). Si editamos el fuente para cambiar algo en el programa, invocar
 nuevamente a \textbf{make} ahora repetirá la compilación (porque ahora el fuente es posterior al ejecutable).
 
-
-\subsubsection{Makefiles}
-En casos sencillos, el comando \textbf{make} puede hacer en forma autónoma todo el trabajo descripto anteriormente. Sin embargo, cuando se construyen proyectos más complejos, formados por muchos fuentes con interdependencias complejas, o cuando se requieren diferentes opciones del proceso de compilación (o aun diferentes compiladores), entonces es conveniente escribir una guía de actividades para \textbf{make}. Esta guía se guarda en un archivo llamado \textbf{makefile} o \textbf{Makefile}. Al ser invocado, el programa \textbf{make} buscará un archivo con alguno de esos nombres en el directorio actual, y si lo encuentra, ejecutará las tareas que se indican allí.  
-
-Un \textbf{makefile} tiene una sintaxis específica y sumamente compleja, pero suele ser suficiente con conocer unas pocas reglas de escritura para escribir \textbf{makefiles} que resulten útiles. 
-
-\begin{itemize}
-	\item Los objetos que se desea construir se llaman \textbf{goals} o metas. Se indican con rótulos al principio del renglón y seguidos por dos puntos.
-	\item Las dependencias de cada \textbf{goal} se escriben inmediatamente después de los dos puntos. Las dependencias son los archivos cuya fecha \textbf{make} comprobará para saber si debe reconstruir un \textbf{goal} o no.
-	\item Las acciones que se debe llevar a cabo para cada \textbf{goal}, en caso de que deba ser reconstruido, se indican a continuación, sin renglones intermedios, e indentadas.
-	\item Un \textbf{goal}, sus dependencias y las acciones asociadas, se separan de las demás con un renglón en blanco.
-\end{itemize}
-
-Así, por ejemplo, el siguiente \textbf{makefile} es equivalente al conocimiento que \textbf{make} aplicó para construir el programa de nuestro primer ejemplo:
-
-\begin{lstlisting}
-hola: hola.c
-	gcc hola.c -o hola
-	
-\end{lstlisting}
-
-Se recomienda consultar el manual del comando \textbf{make}, ya que es muy útil para el desarrollador C dominar el lenguaje de escritura de \textbf{makefiles}. En particular, es valioso comprender que \textbf{make} es versátil y puede utilizarse para automatizar muchas otras tareas, no solamente las de desarrollo de programas.
+%TODO
+%\subsection{Makefiles}
 
 
 \section{Mapa de memoria de un programa}
@@ -350,7 +330,7 @@ direcciones de memoria más altas); la otra, la pila del programa, o stack, crec
 sentido opuesto).
 
 
-\figura[4]{mapa}{El mapa de memoria de un programa se divide conceptualmente en cuatro regiones.}{mapadememoria.eps}
+\figura[4]{mapa}{El mapa de memoria de un programa se divide conceptualmente en cuatro regiones}{mapadememoria.eps}
 
 \begin{description}
 	\item[Texto del programa] La región de texto contendrá el \textbf{código del programa}, es decir, la versión ejecutable de las
@@ -366,7 +346,7 @@ común a todas las funciones. A su vez, esta zona se divide en dos: la de \textb
 explícitamente por el programa (zona a veces llamada \textbf{bss} por motivos históricos) y la zona de \textbf{datos
 estáticos sin inicializar} (a veces llamada \textbf{data}), que será llenada con ceros binarios al momento de la
 carga del programa.
-	\item[Stack] El stack, o \textbf{pila}, aloja las variables locales de las funciones a medida que esas funciones son invocadas. Cada función que declare variables locales obtendrá espacio de almacenamiento para esas variables en el stack. Al terminar la función, como el ámbito de sus variables desaparece, esas variables son desalojadas, y el espacio que ocupaban vuelve a quedar disponible. 
+	\item[Stack] El stack, o \textbf{pila}, aloja las variables locales de las funciones a medida que esas funciones son invocadas. Cada función que declare variables locales obtendrá espacio de almacenamiento para esas variables en el stack. Al terminar la función, como el ámbito de sus variables desaparece, esas variables son desalojadas y el espacio que ocupaban vuelve a quedar disponible. 
 	\item[Heap] Un programa C puede utilizar estructuras de datos dinámicas, como listas o árboles, que vayan
 creciendo al agregárseles elementos. El programa puede \quotes{pedir} memoria cada vez que necesite alojar
 un nuevo elemento de estas estructuras dinámicas, o para crear buffers temporarios para cualquier uso
@@ -375,17 +355,17 @@ que sea necesario. El \textbf{heap} es la zona de donde el programa obtiene esos
 \end{description}
 
 \importante{
-A diferencia de otros lenguajes con administración de memoria automática, en C normalmente es necesario solicitar en forma explícita cada segmento de memoria asignada dinámicamente. Es responsabilidad del programador, también, liberar esta memoria cuando no ya sea necesaria, ya que en C no existe un
+A diferencia de otros lenguajes con administración de memoria automática, en C normalmente es necesario solicitar explícitamente cada segmento de memoria asignada dinámicamente. Es responsabilidad del programador, también, liberar esta memoria cuando no ya sea necesaria, ya que en C no existe un
 mecanismo de \quotes{recolección de basura}, lo cual sí existe en otros lenguajes, para desalojar
-automáticamente objetos que ya no se utilicen.\\
+automáticamente objetos que ya no se utilicen.
 
-
-Por otro lado, un programa que realice una cadena de invocaciones de muchas funciones, 
-especialmente si éstas utilizan muchas variables locales (y aún más especialmente si el programa es recursivo), hará crecer notablemente su stack,
-desplazando el tope de la pila hacia abajo. La destrucción de las variables locales sí es automática, y se produce al momento de finalizar la ejecución de la función.
+Por otro lado, un programa que realice una cadena de invocaciones de muchas funciones, y
+especialmente si éstas utilizan muchas variables locales, hará crecer notablemente su stack,
+desplazando el tope de la pila hacia abajo. La región del stack es el lugar para la creación y destrucción
+de variables locales, que son aquellas que viven mientras tiene lugar la ejecución de la función a la que
+pertenecen. La destrucción de estas variables sí es automática, y se produce al momento de finalizar la
+ejecución de la función.
 }
-
-% La región del stack es el lugar para la creación y destrucción de variables locales, que son aquellas que viven mientras tiene lugar la ejecución de la función a la que pertenecen. 
 
 Este modelo será útil en varias ocasiones para explicar algunas cuestiones especiales del lenguaje C.
 

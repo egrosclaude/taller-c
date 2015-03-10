@@ -1,0 +1,21 @@
+
+\section{Ejercicios}
+\label{sec:bstandardej}
+\begin{enumerate}
+	\item Utilizar la función de cantidad variable de argumentos definida más arriba
+para obtener los promedios de los 2, 3, ..., n primeros elementos de un
+arreglo.
+	\item Construir una función de lista variable de argumentos que efectúe la
+concatenación de una cantidad arbitraria de cadenas en una zona de memoria
+provista por la función que llama.
+	\item Construir una función de cantidad variable de argumentos que sirva para
+imprimir, con un formato especificado, mensajes de debugging, conteniendo
+nombres y valores de variables.
+	\item Construir un programa que separe la entrada standard en palabras, usando las
+macros de clasificación de caracteres. Debe considerar como delimitadores a los
+caracteres espacio, tabulador, signos de puntuación, etc.
+	\item Dadas dos fechas y horas del día, calcular su diferencia. Utilizar las
+funciones de Biblioteca Standard para convertir a tipos de datos convenientes e imprimir la
+diferencia en años, meses, días, horas, etc.
+	\item Generar fechas al azar dentro de un período de tiempo dado.
+\end{enumerate}
